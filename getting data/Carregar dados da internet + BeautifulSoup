@@ -1,0 +1,65 @@
+___BIBLIOTECAS___
+ - urllib.request, urllib.parse, urllib.error
+
+
+___EXEMPLO DE CODIGO___
+
+ - Pagina completa: urllib.request.urlopen(url)
+ - Dados da pagina: urllib.request.urlopen(url).read().decode()
+
+			-----
+
+			url = 'http://data.pr4e.org/romeo.txt'
+			complete_page = urllib.request.urlopen(url)
+			for line in complete_page:
+    				print(line.decode())
+
+			----
+
+
+ ___USO DE REGEX E CONTAGEM DE PALAVRAS___
+
+
+			-----
+
+			import re
+
+			counts = {}
+			reg = '..'
+			palavras = []
+
+			for line in complete_page:
+			    words_in_line = line.decode().split()
+			    
+			    for word in words_in_line:
+				counts[word] = counts.get(word,0) + 1
+		
+				if (re.findall(reg, word)):
+				    palavras.append(word)
+	
+			-----
+
+
+
+___BEAUTIFUL SOUP___
+
+
+			-----
+			from bs4 import BeautifulSoup
+			-----
+
+
+			-----
+
+			html_page = urllib.request.urlopen(url, context = ctx).read()
+
+			# http://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-a-parser
+			soup = BeautifulSoup(html_page, 'html.parser')
+
+			tags = soup('img')
+
+			links = []
+			for tag in tags:
+			    links.append(tag.get('src'))
+			    print(tag.get('src'))
+    

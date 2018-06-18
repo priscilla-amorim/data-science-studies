@@ -1,0 +1,35 @@
+___BIBLIOTECAS___
+ - urllib.request, urllib.parse, urllib.error
+ - import json [*pesquisar sobre as bibliotecas dos formatos de interesse]
+
+
+___EXEMPLOS DE API___
+
+ - Google Maps: 'https://maps.googleapis.com/maps/api/geocode/json?'
+
+			-----
+
+			url_complete = service_url + urllib.parse.urlencode({
+			    'key': key,
+			    'address': city
+			})
+
+			----
+
+	'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC5pc-41_HFqK2uYzYRTvdlinp9ha_6UoA&address=San+Francisco'
+
+
+ - Comprasnet: 
+
+
+__CONEXAO__
+
+			-----
+
+			conexao = urllib.request.urlopen(url_complete)
+			dados = conexao.read().decode()
+			dados_json = json.loads(data)
+
+			----
+
+
